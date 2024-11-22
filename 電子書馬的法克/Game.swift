@@ -211,6 +211,7 @@ struct PreparationPage: View {
                                    showSheet: $showPlayerDeckSheet)
                 }
                 .onAppear{
+                    audioManager.stopBackgroundMusic()
                     audioManager.playBackgroundMusic(named: "prepare")
                 }
                 HStack {
@@ -1043,7 +1044,7 @@ struct PokemonTCGView: View {
     
     private func updateOpponentScore() {
         opponentScore += 1
-        if opponentScore >= 4 {
+        if opponentScore >= 3 {
             winner = "Opponent"
             isGameOver = true
             winPokemonCard = opponentActiveCard as? PokemonCard

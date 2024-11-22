@@ -31,7 +31,7 @@ struct RulesView: View {
                         Text("1.雙方從三種牌組中選擇想玩的出戰")
                             .foregroundStyle(.black)
                             .font(.custom("HanyiSentyCrayon", size: 30))
-                        Text("2.都準備完畢後，透過骰硬幣決定誰先攻")
+                        Text("2.都準備完畢後，會出現GoGO按鈕開始遊戲")
                             .foregroundStyle(.black)
                             .font(.custom("HanyiSentyCrayon", size: 30))
                         Text("3.開場時雙方場上會從牌庫隨機抽一隻寶可夢和三張手牌")
@@ -84,6 +84,7 @@ struct RulesView: View {
                     }
                     .frame(width: 300.0)
                 }
+                .frame(width: 300.0, height: 1000.0)
                 Spacer()
                 Spacer()
                 Spacer()
