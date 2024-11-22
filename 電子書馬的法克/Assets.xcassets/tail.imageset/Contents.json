@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "deviantart-pokemon-reshiram-zekrom-drawing-coin-9f22b7ca8691a8bda8c8c8e059304299.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
