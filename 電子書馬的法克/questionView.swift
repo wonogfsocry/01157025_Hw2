@@ -26,6 +26,7 @@ struct Question: Identifiable {
     var questionText: String
     var correctAnswer: String
     var choices: [String]? // 選擇題的選項，若為是非題則可為 nil
+    var title : String
 }
 
 // 問題組別
@@ -49,47 +50,47 @@ struct questionView: View {
         // 各組問題庫
         @State private var questions: [QuestionGroup: [Question]] = [
                 .basicRules: [
-                    Question(type: .trueFalse, questionText: "每回合只能附加一張能量卡給寶可夢，對嗎？", correctAnswer: "True"),
-                    Question(type: .multipleChoice, questionText: "在自己的回合可以進行以下哪個操作？", correctAnswer: "進行攻擊", choices: ["進行攻擊", "更換場上寶可夢", "棄掉所有卡牌"]),
-                    Question(type: .multipleChoice, questionText: "回合結束時應該在哪個階段？", correctAnswer: "攻擊結束", choices: ["能量附加", "道具使用", "攻擊結束"]),
-                    Question(type: .trueFalse, questionText: "進攻階段時可以放置能量卡，對嗎？", correctAnswer: "False"),
-                    Question(type: .multipleChoice, questionText: "寶可夢的HP代表什麼？", correctAnswer: "生命值", choices: ["生命值", "攻擊力", "防禦力"]),
-                    Question(type: .multipleChoice, questionText: "當對手寶可夢被擊倒，您可以抽取多少張獎勵卡？", correctAnswer: "1張", choices: ["1張", "2張", "3張"])
+                    Question(type: .trueFalse, questionText: "每回合只能附加一張能量卡給寶可夢，對嗎？", correctAnswer: "True", title: "初級對戰規則"),
+                    Question(type: .multipleChoice, questionText: "在自己的回合可以進行以下哪個操作？", correctAnswer: "進行攻擊", choices: ["進行攻擊", "更換場上寶可夢", "棄掉所有卡牌"], title: "初級對戰規則"),
+                    Question(type: .multipleChoice, questionText: "回合結束時應該在哪個階段？", correctAnswer: "攻擊結束", choices: ["能量附加", "道具使用", "攻擊結束"], title: "初級對戰規則"),
+                    Question(type: .trueFalse, questionText: "進攻階段時可以放置能量卡，對嗎？", correctAnswer: "False", title: "初級對戰規則"),
+                    Question(type: .multipleChoice, questionText: "寶可夢的HP代表什麼？", correctAnswer: "生命值", choices: ["生命值", "攻擊力", "防禦力"], title: "初級對戰規則"),
+                    Question(type: .multipleChoice, questionText: "當對手寶可夢被擊倒，您可以抽取多少張獎勵卡？", correctAnswer: "1張", choices: ["1張", "2張", "3張"], title: "初級對戰規則")
                 ],
                 
                 .intermediateRules: [
-                    Question(type: .trueFalse, questionText: "寶可夢可以進行連續攻擊，對嗎？", correctAnswer: "False"),
-                    Question(type: .multipleChoice, questionText: "對手的寶可夢被擊倒時，您可以：", correctAnswer: "抽取一張獎勵卡", choices: ["抽取一張獎勵卡", "立即進行下一回合", "重新開始遊戲"]),
-                    Question(type: .multipleChoice, questionText: "當您的寶可夢被擊倒，您應該：", correctAnswer: "換另一隻寶可夢", choices: ["換另一隻寶可夢", "直接結束遊戲", "放置能量卡"]),
-                    Question(type: .trueFalse, questionText: "您可以在同一回合中使用多個道具，對嗎？", correctAnswer: "True"),
-                    Question(type: .multipleChoice, questionText: "能量卡的數量對寶可夢的什麼屬性有影響？", correctAnswer: "攻擊力", choices: ["生命值", "攻擊力", "防禦力"])
+                    Question(type: .trueFalse, questionText: "寶可夢可以進行連續攻擊，對嗎？", correctAnswer: "False", title: "中級對戰規則"),
+                    Question(type: .multipleChoice, questionText: "對手的寶可夢被擊倒時，您可以：", correctAnswer: "抽取一張獎勵卡", choices: ["抽取一張獎勵卡", "立即進行下一回合", "重新開始遊戲"], title: "中級對戰規則"),
+                    Question(type: .multipleChoice, questionText: "當您的寶可夢被擊倒，您應該：", correctAnswer: "換另一隻寶可夢", choices: ["換另一隻寶可夢", "直接結束遊戲", "放置能量卡"], title: "中級對戰規則"),
+                    Question(type: .trueFalse, questionText: "您可以在同一回合中使用多個道具，對嗎？", correctAnswer: "True", title: "中級對戰規則"),
+                    Question(type: .multipleChoice, questionText: "能量卡的數量對寶可夢的什麼屬性有影響？", correctAnswer: "攻擊力", choices: ["生命值", "攻擊力", "防禦力"], title: "中級對戰規則")
                 ],
                 
                 .advancedRules: [
-                    Question(type: .trueFalse, questionText: "進行進化後的寶可夢可以立即攻擊，對嗎？", correctAnswer: "False"),
-                    Question(type: .multipleChoice, questionText: "當寶可夢進化時，會發生什麼事？", correctAnswer: "重置所有狀態效果", choices: ["重置所有狀態效果", "獲得額外一回合", "提升攻擊力"]),
-                    Question(type: .multipleChoice, questionText: "進化寶可夢需要什麼條件？", correctAnswer: "對應的進化卡", choices: ["對應的進化卡", "任意能量卡", "道具卡"]),
-                    Question(type: .multipleChoice, questionText: "寶可夢可以進化幾次？", correctAnswer: "不限次數", choices: ["一次", "兩次", "不限次數"]),
-                    Question(type: .trueFalse, questionText: "使用技能後，寶可夢不能攻擊，對嗎？", correctAnswer: "True")
+                    Question(type: .trueFalse, questionText: "進行進化後的寶可夢可以立即攻擊，對嗎？", correctAnswer: "False", title: "高級對戰規則"),
+                    Question(type: .multipleChoice, questionText: "當寶可夢進化時，會發生什麼事？", correctAnswer: "重置所有狀態效果", choices: ["重置所有狀態效果", "獲得額外一回合", "提升攻擊力"], title: "高級對戰規則"),
+                    Question(type: .multipleChoice, questionText: "進化寶可夢需要什麼條件？", correctAnswer: "對應的進化卡", choices: ["對應的進化卡", "任意能量卡", "道具卡"], title: "高級對戰規則"),
+                    Question(type: .multipleChoice, questionText: "寶可夢可以進化幾次？", correctAnswer: "不限次數", choices: ["一次", "兩次", "不限次數"], title: "高級對戰規則"),
+                    Question(type: .trueFalse, questionText: "使用技能後，寶可夢不能攻擊，對嗎？", correctAnswer: "True", title: "高級對戰規則")
                 ],
                 
                 .typeWeakness: [
-                    Question(type: .multipleChoice, questionText: "水屬性寶可夢對哪一種屬性有加倍傷害？", correctAnswer: "火屬性", choices: ["火屬性", "電屬性", "草屬性"]),
-                    Question(type: .multipleChoice, questionText: "火屬性寶可夢對以下哪個屬性有加倍傷害？", correctAnswer: "草屬性", choices: ["水屬性", "草屬性", "飛行屬性"]),
-                    Question(type: .trueFalse, questionText: "電屬性寶可夢對水屬性寶可夢有加倍傷害，對嗎？", correctAnswer: "True"),
-                    Question(type: .multipleChoice, questionText: "草屬性寶可夢最怕什麼屬性？", correctAnswer: "火屬性", choices: ["火屬性", "水屬性", "地面屬性"]),
-                    Question(type: .trueFalse, questionText: "水屬性寶可夢對地面屬性寶可夢有加倍傷害，對嗎？", correctAnswer: "True"),
-                    Question(type: .multipleChoice, questionText: "哪種屬性對飛行屬性有加倍傷害？", correctAnswer: "電屬性", choices: ["水屬性", "電屬性", "火屬性"])
+                    Question(type: .multipleChoice, questionText: "水屬性寶可夢對哪一種屬性有加倍傷害？", correctAnswer: "火屬性", choices: ["火屬性", "電屬性", "草屬性"], title: "屬性相剋"),
+                    Question(type: .multipleChoice, questionText: "火屬性寶可夢對以下哪個屬性有加倍傷害？", correctAnswer: "草屬性", choices: ["水屬性", "草屬性", "飛行屬性"], title: "屬性相剋"),
+                    Question(type: .trueFalse, questionText: "電屬性寶可夢對水屬性寶可夢有加倍傷害，對嗎？", correctAnswer: "True", title: "屬性相剋"),
+                    Question(type: .multipleChoice, questionText: "草屬性寶可夢最怕什麼屬性？", correctAnswer: "火屬性", choices: ["火屬性", "水屬性", "地面屬性"], title: "屬性相剋"),
+                    Question(type: .trueFalse, questionText: "水屬性寶可夢對地面屬性寶可夢有加倍傷害，對嗎？", correctAnswer: "True", title: "屬性相剋"),
+                    Question(type: .multipleChoice, questionText: "哪種屬性對飛行屬性有加倍傷害？", correctAnswer: "電屬性", choices: ["水屬性", "電屬性", "火屬性"], title: "屬性相剋")
                 ],
                 
                 .moveDamage: [
-                    Question(type: .multipleChoice, questionText: "藤鞭的傷害是多少？", correctAnswer: "50", choices: ["30", "50", "70"]),
-                    Question(type: .multipleChoice, questionText: "火焰拳的傷害是多少？", correctAnswer: "60", choices: ["40", "60", "80"]),
-                    Question(type: .trueFalse, questionText: "電擊的傷害比火焰拳少，對嗎？", correctAnswer: "True"),
-                    Question(type: .multipleChoice, questionText: "水炮的傷害是多少？", correctAnswer: "70", choices: ["50", "70", "90"]),
-                    Question(type: .trueFalse, questionText: "破壞光線的傷害超過100，對嗎？", correctAnswer: "True"),
-                    Question(type: .multipleChoice, questionText: "火焰車的傷害是多少？", correctAnswer: "90", choices: ["60", "80", "90"]),
-                    Question(type: .trueFalse, questionText: "泰山壓頂的傷害低於30，對嗎？", correctAnswer: "False")
+                    Question(type: .multipleChoice, questionText: "藤鞭的傷害是多少？", correctAnswer: "50", choices: ["30", "50", "70"], title: "屬性相剋"),
+                    Question(type: .multipleChoice, questionText: "火焰拳的傷害是多少？", correctAnswer: "60", choices: ["40", "60", "80"], title: "屬性相剋"),
+                    Question(type: .trueFalse, questionText: "電擊的傷害比火焰拳少，對嗎？", correctAnswer: "True", title: "屬性相剋"),
+                    Question(type: .multipleChoice, questionText: "水炮的傷害是多少？", correctAnswer: "70", choices: ["50", "70", "90"], title: "屬性相剋"),
+                    Question(type: .trueFalse, questionText: "破壞光線的傷害超過100，對嗎？", correctAnswer: "True", title: "屬性相剋"),
+                    Question(type: .multipleChoice, questionText: "火焰車的傷害是多少？", correctAnswer: "90", choices: ["60", "80", "90"], title: "屬性相剋"),
+                    Question(type: .trueFalse, questionText: "泰山壓頂的傷害低於30，對嗎？", correctAnswer: "False", title: "屬性相剋")
                 ]
             ]
                 
@@ -97,6 +98,7 @@ struct questionView: View {
     
         @State private var currentQuestions: [Question] = []
         @State private var showAnimation = false // 控制動畫效果
+        @State private var isVisible = true // 控制框框是否隱形
         
         var body: some View {
             ZStack{
@@ -131,11 +133,27 @@ struct questionView: View {
                         .padding(.horizontal)
                     }
                     
+                                
                     Spacer().frame(height: 20)
                     
                     // 問題顯示區域
                     if let question = currentQuestions[safe: currentQuestionIndex] {
-                        VStack(spacing: 50) {
+                        VStack(spacing: 30) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 12)
+                                    .stroke(Color.black, lineWidth: 2)
+                                    .frame(width: 260.0, height: 55)
+                                
+                                // 內部顏色
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(Color.white)
+                                    .frame(width: 255.0, height: 50)
+                                Text(question.title)
+                                    .cornerRadius(10)
+                                    .foregroundColor(.black)
+                                    .opacity(isVisible ? 1 : 0) // 設定條件隱形
+                                    .animation(.easeInOut(duration: 0.5), value: isVisible) // 可選動畫效果
+                            }
                             Image(.黑板)
                                 .resizable()
                                 .scaledToFit()
@@ -188,7 +206,7 @@ struct questionView: View {
                                                 
                                                 // 選項文字
                                                 Text(choice)
-                                                    .foregroundColor(.primary)
+                                                    .foregroundColor(.black)
                                                     .padding(.horizontal)
                                             }
                                         }

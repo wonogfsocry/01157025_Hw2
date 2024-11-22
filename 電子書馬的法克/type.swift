@@ -16,4 +16,4 @@ struct type: Identifiable {
     var pokemons : [Pokemon] = firPokemon
 }
 
-let typelist : [type] = [type(ele:"Fire", pic1:.fire, pic2: .firePoke, pic3: .fireback, pokemons: firPokemon), type(ele: "Water", pic1: .water, pic2: .watPoke, pic3:.waterback, pokemons: waterPokemon), type(ele: "Eletric", pic1: .eletric, pic2: .elePoke, pic3:.eleback, pokemons: electricPokemon), type(ele: "iron", pic1: .iron, pic2: .ironPoke, pic3:.ironback, pokemons: steelPokemon), type(ele: "Psychic", pic1: .psy, pic2: .psyPoke, pic3:.psyback, pokemons: psyPokemon)]
+let typelist : [type] = [type(ele:"Fire", pic1:.fire, pic2: .firePoke, pic3: .fireback, pokemons: firPokemon), type(ele: "Water", pic1: .water, pic2: .watPoke, pic3:.waterback, pokemons: waterPokemon), type(ele: "Eletric", pic1: .electric, pic2: .elePoke, pic3:.eleback, pokemons: electricPokemon), type(ele: "iron", pic1: .iron, pic2: .ironPoke, pic3:.ironback, pokemons: steelPokemon), type(ele: "Psychic", pic1: .psy, pic2: .psyPoke, pic3:.psyback, pokemons: psyPokemon)]

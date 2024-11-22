@@ -11,18 +11,24 @@ struct Pokemon: Identifiable {
     var name: String
     var hp: Int
     var move: String
+    var moveneed : Int
     var damage: Int
     var description: String
     var rarity: Int
     var price: Double
+    var type: String
+    var weakness: String
     var image: Image
-    init(name: String, hp: Int, move: String, damage: Int, description: String, rarity: Int, image: Image) {
+    init(name: String, hp: Int, move: String, moveneed: Int = 0 ,damage: Int, description: String, rarity: Int, type: String = "none", weakness: String = "none", image: Image) {
             self.name = name
             self.hp = hp
             self.move = move
+            self.moveneed = moveneed
             self.damage = damage
             self.description = description
             self.rarity = rarity
+            self.type = type
+            self.weakness = weakness
             self.image = image
             self.price = Double(rarity * 300) // 初始價錢為稀有度 * 300 台幣
         }
@@ -33,54 +39,72 @@ let firPokemon: [Pokemon] = [
         name: "Charmander",
         hp: 60,
         move: "Ember",
+        moveneed: 1,
         damage: 30,
         description: "Discard a Fire Energy from this Pokémon.",
         rarity: 1,
+        type: "fire",
+        weakness: "water",
         image: Image("charmander_image") // 此處需將圖片加入資源
     ),
     Pokemon(
         name: "Charmeleon",
         hp: 90,
         move: "Fire Claws",
+        moveneed: 3,
         damage: 60,
         description: "",
         rarity: 2,
+        type: "fire",
+        weakness: "water",
         image: Image("charmeleon_image") // 此處需將圖片加入資源
     ),
     Pokemon(
         name: "Charizard",
         hp: 150,
         move: "Fire Spin",
+        moveneed: 4,
         damage: 150,
         description: "Discard 2 Fire Energy from this Pokémon.",
         rarity: 3,
+        type: "fire",
+        weakness: "water",
         image: Image("charizard_image") // 此處需將圖片加入資源
     ),
     Pokemon(
         name: "Charizard EX",
         hp: 180,
         move: "Crimson Storm",
+        moveneed: 4,
         damage: 200,
         description: "Discard 2 Fire Energy from this Pokémon.",
         rarity: 4,
+        type: "fire",
+        weakness: "water",
         image: Image("charizard_ex_image") // 確保此圖片存在於資源中
     ),
     Pokemon(
         name: "Moltres",
         hp: 100,
         move: "Sky Attack",
+        moveneed: 3,
         damage: 130,
         description: "Flip a coin. If tails, this attack does nothing.",
         rarity: 3,
+        type: "fire",
+        weakness: "electric",
         image: Image("moltres_image")
     ),
     Pokemon(
         name: "Moltres EX",
         hp: 140,
         move: "Inferno Dance",
+        moveneed: 3,
         damage: 70,
         description: "Flip 3 coins. Take an amount of Fire Energy from your Energy Zone equal to the number of heads and attach it to your Benched Pokémon in any way you like.",
         rarity: 4,
+        type: "fire",
+        weakness: "electric",
         image: Image("moltres_ex_image")
     )
 ]
@@ -90,72 +114,96 @@ let waterPokemon: [Pokemon] = [
         name: "Omanyte",
         hp: 90,
         move: "Water Gun",
+        moveneed: 1,
         damage: 40,
         description: "Because some Omanyte manage to escape after being restored or are released into the wild by people, this species is becoming a problem.",
         rarity: 2,
+        type: "water",
+        weakness: "electric",
         image: Image("Omanyte") // Replace with actual image reference
     ),
     Pokemon(
         name: "Omastar",
         hp: 140,
         move: "Ancient Whirlpool",
+        moveneed: 3,
         damage: 70,
         description: "Overawed though by a large and heavy shell, Omastar couldn’t move very fast. Some say it went extinct because it was unable to catch food.",
         rarity: 3,
+        type: "water",
+        weakness: "electric",
         image: Image("Omastar")
     ),
     Pokemon(
         name: "Articuno",
         hp: 100,
         move: "Ice Beam",
+        moveneed: 3,
         damage: 60,
         description: "It is said that the Pokémon's beautiful blue wings are made of ice. It flies over snowy mountains, its long tail fluttering along behind it.",
         rarity: 5,
+        type: "water",
+        weakness: "electric",
         image: Image("Articuno")
     ),
     Pokemon(
         name: "Articuno EX",
         hp: 140,
         move: "Blizzard",
+        moveneed:3,
         damage: 80,
         description: "This attack also does 10 damage to each of your opponent’s Benched Pokémon.",
         rarity: 6,
+        type: "water",
+        weakness: "electric",
         image: Image("ArticunoEX")
     ),
     Pokemon(
         name: "Ducklett",
         hp: 50,
         move: "Flap",
+        moveneed: 1,
         damage: 30,
         description: "When attacked, it uses its feathers to splash water, escaping under cover of the spray.",
         rarity: 1,
+        type: "water",
+        weakness: "electric",
         image: Image("Ducklett")
     ),
     Pokemon(
         name: "Swanna",
         hp: 90,
         move: "Wing Attack",
+        moveneed: 3,
         damage: 70,
         description: "Despite their elegant appearance, they can flap their wings strongly and fly for thousands of miles.",
         rarity: 2,
+        type: "water",
+        weakness: "electric",
         image: Image("Swanna")
     ),
     Pokemon(
         name: "Froakie",
         hp: 60,
         move: "Flop",
+        moveneed: 1,
         damage: 10,
         description: "It secretes flexible bubbles from its chest and back. The bubbles reduce the damage it would otherwise take when attacked.",
         rarity: 1,
+        type: "water",
+        weakness: "electric",
         image: Image("Froakie")
     ),
     Pokemon(
         name: "Frogadier",
         hp: 80,
         move: "Water Drip",
+        moveneed: 3,
         damage: 30,
         description: "It can throw bubble-covered pebbles with precise control, leaving empty areas up to a hundred feet away.",
         rarity: 3,
+        type: "water",
+        weakness: "electric",
         image: Image("Frogadier")
     )
 ]
@@ -165,54 +213,72 @@ let electricPokemon: [Pokemon] = [
         name: "Magneton",
         hp: 80,
         move: "Spinning Attack",
+        moveneed: 2,
         damage: 60,
         description: "Three Magnemite are linked by a strong magnetic force. Earaches will occur if you get too close.",
         rarity: 3,
+        type: "electric",
+        weakness: "fire",
         image: Image("Magneton") // Replace with actual image reference
     ),
     Pokemon(
         name: "Voltorb",
         hp: 60,
         move: "Tackle",
+        moveneed: 1,
         damage: 20,
         description: "It rolls to move. If the ground is uneven, a sudden jolt from hitting a bump can cause it to explode.",
         rarity: 1,
+        type: "electric",
+        weakness: "fire",
         image: Image("Voltorb")
     ),
     Pokemon(
         name: "Electrode",
         hp: 80,
         move: "Electro Ball",
+        moveneed: 2,
         damage: 70,
         description: "The more energy it charges up, the faster it gets. But this also makes it more likely to explode.",
         rarity: 2,
+        type: "electric",
+        weakness: "fire",
         image: Image("Electrode")
     ),
     Pokemon(
         name: "Jolteon",
         hp: 90,
         move: "Pin Missile",
+        moveneed: 2,
         damage: 40,
         description: "It concentrates the weak electric charges emitted by its cells and launches wicked lightning bolts.",
         rarity: 4,
+        type: "electric",
+        weakness: "fire",
         image: Image("Jolteon")
     ),
     Pokemon(
         name: "Zapdos",
         hp: 100,
         move: "Raging Thunder",
+        moveneed: 3,
         damage: 100,
         description: "This Pokémon has complete control over electricity. There are tales of Zapdos nesting in the dark depths of pitch-black thunderclouds.",
         rarity: 5,
+        type: "electric",
+        weakness: "electric",
         image: Image("Zapdos")
     ),
     Pokemon(
         name: "Zapdos EX",
         hp: 130,
         move: "Thundering Hurricane",
+        moveneed: 4,
         damage: 50,
         description: "Flip 4 coins. This attack does 50 damage for each heads.",
         rarity: 6,
+        type: "electric",
+        weakness: "electric",
         image: Image("ZapdosEX")
     )
 ]
