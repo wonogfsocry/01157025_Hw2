@@ -1053,7 +1053,7 @@ struct PokemonTCGView: View {
     
     private func updatePlayerScore() {
         playerScore += 1
-        if playerScore >= 4 {
+        if playerScore >= 3 {
             winner = "Player"
             isGameOver = true
             winPokemonCard = playerActiveCard as? PokemonCard
