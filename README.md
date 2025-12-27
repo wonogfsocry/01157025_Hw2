@@ -69,8 +69,13 @@
     * **攻擊回饋**：使用 `.animation(.interpolatingSpring)` 製作卡片撞擊的視覺效果。
     * **動態血條**：`HPGaugeView` 使用 `Capsule` 與幾何計算，動態顯示剩餘血量。
 
-[![對戰遊戲 Demo](TCG_screen.jpg)](https://youtu.be/UKFrb7iAJtQ?si=tYyGpX6rdAQ34Yfi)
-*(點擊上方圖片觀看 YouTube 展示影片)*
+> **👇 點擊下方圖片觀看 YouTube 展示影片**
+
+<p align="center">
+<a href="https://youtu.be/UKFrb7iAJtQ?si=tYyGpX6rdAQ34Yfi" target="_blank">
+    <img src="TCG_screen.jpg" width="500" alt="對戰遊戲 Demo"/>
+</a>
+</p>
 
 ---
 
